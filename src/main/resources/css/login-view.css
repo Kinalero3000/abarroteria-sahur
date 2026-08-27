@@ -1,0 +1,29 @@
+/* Layout y Fondo de la Ventana */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #F8FAFC, #1EA6A3);
+    -fx-alignment: center;
+}
+
+
+/* Indicadores de campos (Inserte su Correo / Contraseña) */
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #475569;
+}
+
+/* Campos de entrada (TextField / PasswordField) */
+.text-field, .password-field {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #1E293B;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #3B82F6;
+    -fx-border-width: 1.5px;
+}
