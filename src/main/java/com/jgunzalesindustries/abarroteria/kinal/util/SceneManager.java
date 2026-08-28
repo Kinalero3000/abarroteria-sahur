@@ -9,22 +9,26 @@ import javafx.stage.Stage;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.controller.DashBoardController;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.controller.LoginController;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.repository.AuthRepository;
+import main.java.com.jgunzalesindustries.abarroteria.kinal.repository.ProductoRepository;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.service.AuthService;
+import main.java.com.jgunzalesindustries.abarroteria.kinal.service.DashBoardService;
 
 public class SceneManager {
             
     //atributos
     private final Stage stage; 
-        
+    private final String FXML_PATH;
+    private  ProductoRepository productoRepository = new ProductoRepository();
     //constructor
     public SceneManager(Stage stage){
             this.stage = stage;
+            FXML_PATH = "/main/resources/view";
         }
     
     //métodos
     public void showLoginView() throws Exception{
-            
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/login-view.fxml"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "/login-view.fxml"));
  
             
             loader.setControllerFactory(
@@ -51,19 +55,21 @@ public class SceneManager {
     
     //dashboard stage
     public void showDashBoardView() throws Exception {
-    FXMLLoader dashBoardLoader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view.fxml"));
+    FXMLLoader dashBoardLoader = new FXMLLoader(getClass().getResource( FXML_PATH + "/dashboard-view.fxml"));
 
     dashBoardLoader.setControllerFactory(clazz -> {
         if (clazz == DashBoardController.class) {
             // Instancia aquí las dependencias que necesite tu controlador
             // Ejemplo: DashboardRepository repo = new DashboardRepository();
             // Ejemplo: DashboardService service = new DashboardService(repo);
-            return new DashBoardController(/* pasa tus servicios o 'this' aquí */);
+           
+            DashBoardService service = new DashBoardService(productoRepository);
+            return new DashBoardController(service, this);
         }
         try {
             return clazz.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
-            throw new RuntimeException("Error al crear el controlador: " + e.getMessage(), e);
+            throw new RuntimeException("Error al cargar el constructor: " + e.getMessage(), e);
         }
     });
 
