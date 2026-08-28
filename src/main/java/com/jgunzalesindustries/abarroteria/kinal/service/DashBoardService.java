@@ -20,4 +20,12 @@ public class DashBoardService {
     }  
     
     }
+    
+    public boolean deleteProducto(String idProducto){
+    if(idProducto == null || idProducto.trim().isEmpty()){
+    throw new IllegalArgumentException("El id del producto no es valido");
+    }
+    return productoRepository.deleteById(idProducto);
+    
+    }
 }

@@ -2,9 +2,14 @@ package main.java.com.jgunzalesindustries.abarroteria.kinal.controller;
 
 import java.math.BigDecimal;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,4 +55,35 @@ public class DashBoardController implements Initializable {
     
     }
     
+    public void handleDeleteProducto(ActionEvent event){
+    Producto productoSeleccionado = tableProducto.getSelectionModel().getSelectedItem();
+
+    if (productoSeleccionado == null) {
+        sceneManager.showAlertInfo(
+            "Selección requerida", 
+            "Advertencia", 
+            "Por favor, selecciona un producto de la tabla antes de continuar.", 
+            AlertType.WARNING
+        );
+        return;
+    }
+    Alert confirmacion = new Alert(AlertType.CONFIRMATION);
+    confirmacion.setHeaderText("¿Eliminar producto?");
+    confirmacion.setTitle("Confirmar acción");
+    confirmacion.setContentText("¿Estás seguro de eliminar: " + productoSeleccionado.getNombreProducto() + "?");
+    
+    Optional<ButtonType> respuesta = confirmacion.showAndWait();
+
+    if (respuesta.isPresent() && respuesta.get() == ButtonType.OK) {
+        boolean eliminado = dashBoardService.deleteProducto(productoSeleccionado.getIdProducto());
+
+        if (eliminado) {
+            tableProducto.getItems().remove(productoSeleccionado);
+            sceneManager.showAlertInfo("Éxito", "Operación exitosa", "El producto fue eliminado correctamente.", AlertType.INFORMATION);
+        } else {
+            sceneManager.showAlertInfo("Error", "Error al eliminar", "No se pudo eliminar el producto de la base de datos.", AlertType.ERROR);
+        }
+    }
+    
+    }
 }

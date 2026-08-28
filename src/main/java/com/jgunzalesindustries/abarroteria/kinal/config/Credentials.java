@@ -5,9 +5,9 @@ public class Credentials {
        //final: constante
     //NUNCA DEJAR DATOS QUEMADOS AL HACER PUSH EN GIT!!!!!!!!!!!!
     //usar System.getenv("Variable de entorno")
-    public static final String URL_DB = "jdbc:mysql://localhost:3306/ejemplo";
+    public static final String URL_DB = "jdbc:mysql://localhost:3306/tubasededatos";
     public static final String USER_DB = "usuario";
-    public static final String PASS_DB = "contrasena";
+    public static final String PASS_DB = "contraseña";
     
     private Credentials(){
     
