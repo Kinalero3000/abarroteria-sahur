@@ -18,7 +18,7 @@ public class LoginDTOResponse {
     public LoginDTOResponse(String nombre, String apellido, String nombreRol){
     
     }
-    
+
     public String getNombre() {
         return nombre;
     }

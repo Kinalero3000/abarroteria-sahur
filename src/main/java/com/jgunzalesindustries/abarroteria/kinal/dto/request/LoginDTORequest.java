@@ -15,6 +15,7 @@ public class LoginDTORequest {
     public LoginDTORequest(TextField txtFieldEmail, TextField txtFieldPassword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+   
     
     //métodos
 
