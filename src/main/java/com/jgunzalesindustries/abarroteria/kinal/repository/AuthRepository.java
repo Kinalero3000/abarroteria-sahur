@@ -33,7 +33,7 @@ public class AuthRepository {
             
         }catch(SQLException e){
                     
-                    System.out.println("Error al buscar el usuario.");
+                    System.out.println("Error al buscar el usuario." + e.getMessage());
                     
                     }
         return null;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/register-style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.1" fx:controller="main.java.com.jgunzalesindustries.abarroteria.kinal.controller.RegistroController">
+   <children>
+      <Pane layoutX="94.0" layoutY="4.0" prefHeight="392.0" prefWidth="412.0" styleClass="pane">
+         <children>
+            <Label layoutX="192.0" layoutY="14.0" text="Label" />
+            <TextField fx:id="txtFieldNombre" layoutX="132.0" layoutY="58.0" />
+            <TextField fx:id="txtFieldApellido" layoutX="132.0" layoutY="104.0" />
+            <TextField fx:id="txtFieldEmail" layoutX="132.0" layoutY="157.0" />
+            <TextField fx:id="txtFieldPassword" layoutX="132.0" layoutY="206.0" />
+            <TextField fx:id="txtFieldConfirmarPassword" layoutX="132.0" layoutY="252.0" text="gucci morti" />
+            <ComboBox fx:id="comboBoxRol" layoutX="131.0" layoutY="297.0" prefWidth="150.0" />
+            <Button fx:id="btnRegistrar" layoutX="105.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleRegistro" text="Button" />
+            <Button fx:id="btnIrALogin" layoutX="281.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleIrALogin" text="Button" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
