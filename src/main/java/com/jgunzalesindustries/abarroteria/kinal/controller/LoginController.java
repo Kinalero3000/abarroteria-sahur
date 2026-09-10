@@ -34,6 +34,10 @@ public class LoginController implements Initializable {
       public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+      
+      public void handleIrARegistro() throws Exception{
+    sceneManager.showRegistroView();
+}
     
     public void handleLogin() throws Exception{
         
