@@ -12,6 +12,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.model.Producto;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.repository.ProductoRepository;
@@ -33,6 +34,14 @@ public class DashBoardController implements Initializable {
     private TableColumn<Producto, Integer> tableColumnStock;
     @FXML
     private TableColumn<Producto, BigDecimal> tableColumnPrecio;
+    @FXML
+    private TextField txtFieldIdProducto;
+    @FXML
+    private TextField txtFieldNombreProducto;
+    @FXML
+    private TextField txtFieldStock;
+    @FXML
+    private TextField txtFieldPrecio;
 
     public DashBoardController(DashBoardService dashBoardService, SceneManager sceneManager) {
         this.dashBoardService = dashBoardService;
@@ -43,6 +52,7 @@ public class DashBoardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         handleLoadDataTableView();
+        handleSeleccionarProducto();
     }
     
     private void handleLoadDataTableView(){
@@ -53,6 +63,18 @@ public class DashBoardController implements Initializable {
         tableProducto.setItems(dashBoardService.findProducto());
         
     
+    }
+    
+    private void handleSeleccionarProducto(){
+        tableProducto.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
+            if(newValue != null){
+                txtFieldIdProducto.setText(newValue.getIdProducto());
+                txtFieldNombreProducto.setText(newValue.getNombreProducto());
+                txtFieldStock.setText(String.valueOf(newValue.getStock()));
+                txtFieldPrecio.setText(newValue.getPrecio().toString());
+                txtFieldIdProducto.setDisable(true);
+            }
+        });
     }
     
     public void handleDeleteProducto(ActionEvent event){
@@ -85,5 +107,80 @@ public class DashBoardController implements Initializable {
         }
     }
     
+    }
+    
+    public void handleGuardarProducto(ActionEvent event){
+        try{
+            Producto producto = construirProductoDesdeFormulario();
+            boolean guardado = dashBoardService.createProducto(producto);
+
+            if(guardado){
+                tableProducto.getItems().add(producto);
+                sceneManager.showAlertInfo("Éxito", "Operación exitosa", "El producto fue agregado correctamente.", AlertType.INFORMATION);
+                handleLimpiarCampos();
+            }else{
+                sceneManager.showAlertInfo("Error", "Error al guardar", "No se pudo agregar el producto.", AlertType.ERROR);
+            }
+        }catch(IllegalArgumentException e){
+            sceneManager.showAlertInfo("Datos inválidos", "Verifica los campos", e.getMessage(), AlertType.WARNING);
+        }catch(RuntimeException e){
+            sceneManager.showAlertInfo("Error", "Error al guardar", "No se pudo agregar el producto.", AlertType.ERROR);
+        }
+    }
+    
+    public void handleActualizarProducto(ActionEvent event){
+        Producto productoSeleccionado = tableProducto.getSelectionModel().getSelectedItem();
+
+        if(productoSeleccionado == null){
+            sceneManager.showAlertInfo("Selección requerida", "Advertencia", "Selecciona un producto de la tabla para actualizar.", AlertType.WARNING);
+            return;
+        }
+
+        try{
+            Producto producto = construirProductoDesdeFormulario();
+            boolean actualizado = dashBoardService.updateProducto(producto);
+
+            if(actualizado){
+                handleLoadDataTableView();
+                sceneManager.showAlertInfo("Éxito", "Operación exitosa", "El producto fue actualizado correctamente.", AlertType.INFORMATION);
+                handleLimpiarCampos();
+            }else{
+                sceneManager.showAlertInfo("Error", "Error al actualizar", "No se pudo actualizar el producto.", AlertType.ERROR);
+            }
+        }catch(IllegalArgumentException e){
+            sceneManager.showAlertInfo("Datos inválidos", "Verifica los campos", e.getMessage(), AlertType.WARNING);
+        }catch(RuntimeException e){
+            sceneManager.showAlertInfo("Error", "Error al actualizar", "No se pudo actualizar el producto.", AlertType.ERROR);
+        }
+    }
+    
+    public void handleLimpiarCampos(){
+        txtFieldIdProducto.clear();
+        txtFieldNombreProducto.clear();
+        txtFieldStock.clear();
+        txtFieldPrecio.clear();
+        txtFieldIdProducto.setDisable(false);
+        tableProducto.getSelectionModel().clearSelection();
+    }
+    
+    private Producto construirProductoDesdeFormulario(){
+        String idProducto = txtFieldIdProducto.getText();
+        String nombreProducto = txtFieldNombreProducto.getText();
+        int stock;
+        BigDecimal precio;
+
+        try{
+            stock = Integer.parseInt(txtFieldStock.getText().trim());
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("El stock debe ser un número entero válido.");
+        }
+
+        try{
+            precio = new BigDecimal(txtFieldPrecio.getText().trim());
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("El precio debe ser un número válido.");
+        }
+
+        return new Producto(idProducto, nombreProducto, stock, precio);
     }
 }

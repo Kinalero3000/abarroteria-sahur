@@ -8,10 +8,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.controller.DashBoardController;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.controller.LoginController;
+import main.java.com.jgunzalesindustries.abarroteria.kinal.controller.RegistroController;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.repository.AuthRepository;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.repository.ProductoRepository;
+import main.java.com.jgunzalesindustries.abarroteria.kinal.repository.UserRepository;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.service.AuthService;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.service.DashBoardService;
+import main.java.com.jgunzalesindustries.abarroteria.kinal.service.RegistroService;
 
 public class SceneManager {
             
@@ -79,6 +82,31 @@ public class SceneManager {
     stage.centerOnScreen();
     stage.show();
 }
+    
+    //registro stage
+    public void showRegistroView() throws Exception {
+        FXMLLoader registroLoader = new FXMLLoader(getClass().getResource(FXML_PATH + "/register-view.fxml"));
+
+        registroLoader.setControllerFactory(clazz -> {
+            if (clazz == RegistroController.class) {
+                UserRepository usuarioRepository = new UserRepository();
+                RegistroService registroService = new RegistroService(usuarioRepository);
+                return new RegistroController(registroService, this, usuarioRepository);
+            }
+            try {
+                return clazz.getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new RuntimeException("Error al cargar el constructor: " + e.getMessage(), e);
+            }
+        });
+
+        Parent root = registroLoader.load();
+        Scene scene = new Scene(root, 600, 400);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
     
     
     

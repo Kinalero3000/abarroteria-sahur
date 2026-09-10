@@ -1,0 +1,17 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #F8FAFC, #1EA6A3);
+    -fx-alignment: center;
+}
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #475569;
+}
+
+.pane {
+    -fx-background-color: #d6db7f ;
+    
+    
+    
+}

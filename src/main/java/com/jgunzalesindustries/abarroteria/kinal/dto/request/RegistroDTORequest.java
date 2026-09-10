@@ -2,31 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main.java.com.jgunzalesindustries.abarroteria.kinal.model;
+package main.java.com.jgunzalesindustries.abarroteria.kinal.dto.request;
 
-public class Usuario {
-    private String idUsuario;
+
+public class RegistroDTORequest {
     private String nombre;
     private String apellido;
     private String email;
-    private String contrasenaHash;
+    private String password;
+    private String confirmarPassword;
     private int idRol;
 
-    public Usuario(String idUsuario, String nombre, String apellido, String email, String contrasenaHash, int idRol) {
-        this.idUsuario = idUsuario;
+    public RegistroDTORequest(String nombre, String apellido, String email, String password, String confirmarPassword, int idRol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contrasenaHash = contrasenaHash;
+        this.password = password;
+        this.confirmarPassword = confirmarPassword;
         this.idRol = idRol;
-    }
-
-    public String getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -53,12 +46,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContrasenaHash() {
-        return contrasenaHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenaHash(String contrasenaHash) {
-        this.contrasenaHash = contrasenaHash;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmarPassword() {
+        return confirmarPassword;
+    }
+
+    public void setConfirmarPassword(String confirmarPassword) {
+        this.confirmarPassword = confirmarPassword;
     }
 
     public int getIdRol() {

@@ -10,7 +10,7 @@ public class AuthRepository {
     
     public LoginDTOResponse findUserByEmail(LoginDTORequest request){
         
-        String sql = "select u.nombre, u.apellido, u.contrasena_hash, r.rol from usuarios as u " +
+        String sql = "select u.nombre, u.apellido, u.contrasena_hash, r.nombre_rol from usuarios as u " +
                             "inner join roles as r " +
                             "on u.id_rol = r.id_rol " +
                             "where u.email = ?";
@@ -26,7 +26,7 @@ public class AuthRepository {
                 rs.getString("nombre"),
                 rs.getString("apellido"),
                 rs.getString("contrasena_hash"),
-                rs.getString("rol")
+                rs.getString("nombre_rol")
                 );
                 
             }
