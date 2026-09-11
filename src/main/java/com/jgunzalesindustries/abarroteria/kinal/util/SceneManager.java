@@ -58,7 +58,7 @@ public class SceneManager {
     
     //dashboard stage
     public void showDashBoardView() throws Exception {
-    FXMLLoader dashBoardLoader = new FXMLLoader(getClass().getResource( FXML_PATH + "/dashboard-view.fxml"));
+    FXMLLoader dashBoardLoader = new FXMLLoader(getClass().getResource( FXML_PATH + "/product-view.fxml"));
 
     dashBoardLoader.setControllerFactory(clazz -> {
         if (clazz == DashBoardController.class) {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/dashboard-style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.1">
+   <children>
+      <Pane layoutX="82.0" layoutY="21.0" prefHeight="680.0" prefWidth="1109.0" styleClass="dashboard-container">
+         <children>
+            <GridPane layoutX="14.0" layoutY="30.0" prefHeight="650.0" prefWidth="1062.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.0" minWidth="10.0" prefWidth="340.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="689.0" minWidth="10.0" prefWidth="681.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="133.0" minHeight="4.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="587.0" minHeight="10.0" prefHeight="587.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TableView fx:id="tableProducto" prefHeight="511.0" prefWidth="722.0" styleClass="dashboard-table" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <columns>
+                        <TableColumn prefWidth="40.0" text="ID" />
+                        <TableColumn prefWidth="110.0" text="ID Cliente" />
+                        <TableColumn prefWidth="75.0" text="Monto" />
+                        <TableColumn prefWidth="87.0" text="Fecha" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Pane prefHeight="268.0" prefWidth="35.0" styleClass="dashboard-panel" GridPane.rowIndex="1">
+                     <children>
+                        <Button layoutX="36.0" layoutY="513.0" mnemonicParsing="false" styleClass="delete-button" stylesheets="@../css/button-style.css" text="Eliminar factura">
+                           <font>
+                              <Font name="MS Gothic" size="12.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="36.0" layoutY="64.0" prefHeight="59.0" prefWidth="208.0" promptText="ID producto" styleClass="dashboard-input" />
+                        <TextField layoutX="36.0" layoutY="134.0" promptText="Nombre producto" styleClass="dashboard-input" />
+                        <TextField layoutX="36.0" layoutY="205.0" promptText="Stock" styleClass="dashboard-input" />
+                        <TextField layoutX="36.0" layoutY="276.0" promptText="Precio" styleClass="dashboard-input" />
+                        <Button layoutX="36.0" layoutY="339.0" mnemonicParsing="false" styleClass="dashboard-button" stylesheets="@../css/button-style.css" text="Agregar factura">
+                           <font>
+                              <Font name="MS Gothic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="35.0" layoutY="397.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../css/button-style.css" text="Actualizar factura">
+                           <font>
+                              <Font name="MS Gothic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="36.0" layoutY="455.0" mnemonicParsing="false" styleClass="clear-button" stylesheets="@../css/button-style.css" text="Limpiar campos">
+                           <font>
+                              <Font name="MS Gothic" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="136.0" styleClass="dashboard-label" text="Datos" />
+                        <Label layoutX="36.0" layoutY="37.0" styleClass="labels" text="ID" />
+                        <Label layoutX="36.0" layoutY="110.0" styleClass="labels" text="ID Cliente" />
+                        <Label layoutX="36.0" layoutY="182.0" styleClass="labels" text="Monto" />
+                        <Label layoutX="36.0" layoutY="254.0" styleClass="labels" text="Fecha" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </Pane>
+               </children>
+            </GridPane>
+            <Label layoutX="384.0" layoutY="9.0" styleClass="dashboard-title" text="Gestión de Facturas" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
