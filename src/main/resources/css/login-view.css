@@ -1,29 +1,203 @@
-/* Layout y Fondo de la Ventana */
+/* =========================================
+   PANTALLA PRINCIPAL
+   ========================================= */
+
 .root {
-    -fx-background-color: linear-gradient(to bottom, #F8FAFC, #1EA6A3);
-    -fx-alignment: center;
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #38BDF8,
+        #3B82F6,
+        #6366F1,
+        #7C3AED
+    );
 }
 
 
-/* Indicadores de campos (Inserte su Correo / Contraseña) */
-.field-label {
-    -fx-font-size: 13px;
-    -fx-font-weight: 600;
-    -fx-text-fill: #475569;
+/* =========================================
+   CONTENEDOR DEL LOGIN
+   ========================================= */
+
+.login-container {
+
+    -fx-background-color: rgba(255, 255, 255, 0.94);
+
+    -fx-background-radius: 24px;
+
+    -fx-border-color: rgba(255, 255, 255, 0.80);
+    -fx-border-width: 1px;
+    -fx-border-radius: 24px;
+
+    -fx-padding: 40px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.18),
+        28,
+        0.16,
+        0,
+        12
+    );
 }
 
-/* Campos de entrada (TextField / PasswordField) */
-.text-field, .password-field {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #CBD5E1;
-    -fx-border-radius: 6px;
-    -fx-background-radius: 6px;
-    -fx-padding: 8px 12px;
+
+/* =========================================
+   LOGO
+   ========================================= */
+
+.login-logo {
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(59, 130, 246, 0.22),
+        12,
+        0.20,
+        0,
+        4
+    );
+}
+
+
+/* =========================================
+   TÍTULO
+   ========================================= */
+
+.login-title {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #164E63;
+}       
+
+/* =========================================
+   SUBTÍTULO
+   ========================================= */
+
+.login-subtitle {
+
+    -fx-font-family: "Segoe UI";
+
     -fx-font-size: 14px;
-    -fx-text-fill: #1E293B;
+
+    -fx-text-fill: #64748B;
 }
 
-.text-field:focused, .password-field:focused {
-    -fx-border-color: #3B82F6;
-    -fx-border-width: 1.5px;
+
+/* =========================================
+   LABELS
+   ========================================= */
+
+.login-label {
+
+    -fx-font-family: "Segoe UI";
+
+    -fx-font-size: 20px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #334155;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+.login-input {
+    -fx-pref-width: 380px;
+    -fx-pref-height: 35px;
+
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 0 15px;
+
+    -fx-font-size: 14px;
+}
+
+
+/* =========================================
+   INPUT ENFOCADO
+   ========================================= */
+
+.login-input:focused {
+
+    -fx-background-color: white;
+
+    -fx-border-color: #38BDF8;
+
+    -fx-border-width: 2px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(56, 189, 248, 0.25),
+        10,
+        0.20,
+        0,
+        0
+    );
+}
+
+
+/* =========================================
+   INPUT HOVER
+   ========================================= */
+
+.login-input:hover {
+    
+    -fx-border-color: #93C5FD;
+
+    -fx-background-color: white;
+}
+
+
+/* =========================================
+   TEXTOS SECUNDARIOS
+   ========================================= */
+
+.login-text {
+
+    -fx-font-family: "Segoe UI";
+
+    -fx-font-size: 20px;
+
+    -fx-text-fill: #64748B;
+}
+
+
+/* =========================================
+   LINK / TEXTO INTERACTIVO
+   ========================================= */
+
+.login-link {
+
+    -fx-font-family: "Segoe UI";
+
+    -fx-font-size: 13px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #4F46E5;
+
+    -fx-cursor: hand;
+}
+
+
+.login-link:hover {
+
+    -fx-text-fill: #7C3AED;
+
+    -fx-underline: true;
+}
+
+
+.login-link {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4F46E5;
+    -fx-cursor: hand;
+}
+
+.login-link:hover {
+    -fx-text-fill: #7C3AED;
+    -fx-underline: true;
 }

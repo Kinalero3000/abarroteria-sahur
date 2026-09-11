@@ -49,7 +49,7 @@ public class SceneManager {
             });
               
             Parent root = loader.load();
-            Scene scene = new Scene(root, 600, 400);
+            Scene scene = new Scene(root, 1280, 720);
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();
@@ -77,7 +77,7 @@ public class SceneManager {
     });
 
     Parent root = dashBoardLoader.load();
-    Scene scene = new Scene(root, 600, 400);
+    Scene scene = new Scene(root, 1280, 720);
     stage.setScene(scene);
     stage.centerOnScreen();
     stage.show();
@@ -101,7 +101,7 @@ public class SceneManager {
         });
 
         Parent root = registroLoader.load();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 1280, 720);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
