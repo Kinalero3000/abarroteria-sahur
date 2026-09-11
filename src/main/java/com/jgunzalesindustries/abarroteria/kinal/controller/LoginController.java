@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.dto.request.LoginDTORequest;
 import main.java.com.jgunzalesindustries.abarroteria.kinal.dto.response.LoginDTOResponse;
@@ -21,7 +22,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField txtFieldEmail;
     @FXML
-    private TextField txtFieldPassword;
+    private PasswordField txtFieldPassword;
     //constructor 
     public LoginController(AuthService authService, SceneManager sceneManager){
         this.authService = authService;

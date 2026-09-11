@@ -18,6 +18,7 @@ public class DataBaseConnection {
     //método 
     public static Connection getDataBaseConnection() throws SQLException{
         if(connection == null || connection.isClosed()){
+            System.out.println("Conectando a: " + Credentials.URL_DB);
             connection = DriverManager.getConnection(Credentials.URL_DB, Credentials.USER_DB, Credentials.PASS_DB);
         }
         return connection; 

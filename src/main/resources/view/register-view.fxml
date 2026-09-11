@@ -7,20 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/register-style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.1" fx:controller="main.java.com.jgunzalesindustries.abarroteria.kinal.controller.RegistroController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/register-style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.jgunzalesindustries.abarroteria.kinal.controller.RegistroController">
    <children>
-      <Pane layoutX="94.0" layoutY="4.0" prefHeight="392.0" prefWidth="412.0" styleClass="pane">
+      <Pane layoutX="233.0" layoutY="62.0" prefHeight="596.0" prefWidth="814.0" styleClass="pane">
          <children>
-            <Label layoutX="192.0" layoutY="14.0" text="Label" />
-            <TextField fx:id="txtFieldNombre" layoutX="132.0" layoutY="58.0" />
-            <TextField fx:id="txtFieldApellido" layoutX="132.0" layoutY="104.0" />
-            <TextField fx:id="txtFieldEmail" layoutX="132.0" layoutY="157.0" />
-            <TextField fx:id="txtFieldPassword" layoutX="132.0" layoutY="206.0" />
-            <TextField fx:id="txtFieldConfirmarPassword" layoutX="132.0" layoutY="252.0" text="gucci morti" />
-            <ComboBox fx:id="comboBoxRol" layoutX="131.0" layoutY="297.0" prefWidth="150.0" />
-            <Button fx:id="btnRegistrar" layoutX="105.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleRegistro" text="Button" />
-            <Button fx:id="btnIrALogin" layoutX="281.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleIrALogin" text="Button" />
+            <Label layoutX="352.0" layoutY="14.0" styleClass="register-title" text="Registro" />
+            <TextField fx:id="txtFieldNombre" layoutX="279.0" layoutY="85.0" prefWidth="290.0" styleClass="register-input" />
+            <TextField fx:id="txtFieldApellido" layoutX="282.0" layoutY="156.0" prefWidth="290.0" styleClass="register-input" />
+            <TextField fx:id="txtFieldEmail" layoutX="282.0" layoutY="223.0" prefWidth="290.0" styleClass="register-input" />
+            <TextField fx:id="txtFieldPassword" layoutX="282.0" layoutY="288.0" prefWidth="290.0" styleClass="register-input" />
+            <TextField fx:id="txtFieldConfirmarPassword" layoutX="282.0" layoutY="365.0" prefWidth="290.0" styleClass="register-input" />
+            <ComboBox fx:id="comboBoxRol" layoutX="282.0" layoutY="436.0" prefWidth="290.0" styleClass="register-combo" />
+            <Button fx:id="btnRegistrar" layoutX="257.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleRegistro" styleClass="btn-register" text="Registrate" />
+            <Button fx:id="btnIrALogin" layoutX="506.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleIrALogin" styleClass="btn-secondary" stylesheets="@../css/button-style.css" text="Volver" />
+            <Label layoutX="280.0" layoutY="61.0" styleClass="field-label" text="Nombre" />
+            <Label layoutX="279.0" layoutY="132.0" styleClass="field-label" text="Apellido" />
+            <Label layoutX="280.0" layoutY="199.0" styleClass="field-label" text="Correo" />
+            <Label layoutX="280.0" layoutY="264.0" styleClass="field-label" text="Contraseña" />
+            <Label layoutX="282.0" layoutY="341.0" styleClass="field-label" text="Repite la contraseña" />
+            <Label layoutX="282.0" layoutY="409.0" styleClass="field-label" text="Rol" />
          </children>
       </Pane>
    </children>
